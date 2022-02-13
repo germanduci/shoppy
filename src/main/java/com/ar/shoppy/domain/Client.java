@@ -18,6 +18,6 @@ public class Client {
     private String name;
     private String email;
     private String phone;
-    private List <Order> order;
+    private List <Order> orders;
 
 }
