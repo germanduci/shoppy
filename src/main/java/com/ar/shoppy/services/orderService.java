@@ -48,21 +48,9 @@ public class orderService {
             orderRepo.delete(response.get());
         }
     }
-    //Verificar modificación de estado de ordenes segun cliente.
-    public void orderStatus(String id){
-        Optional<Order> response = orderRepo.findById(id);
-        if (response.isPresent()){
-            orderRepo.save(response.get());
-        }
-    }
 
-    public Order orderListName(String name) {
-        Optional<Order> response = orderRepo.findByName(name);
-        if (response.isEmpty()) {
-            Order order = response.get();
-            return order;
-        } else {
-            return null;
-        }
+    //Verificar modificación de estado de ordenes segun cliente.
+    public List<Order> orderStatus(String status){
+         return orderRepo.findByStatus(status);
     }
 }

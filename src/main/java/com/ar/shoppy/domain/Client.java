@@ -1,15 +1,15 @@
 package com.ar.shoppy.domain;
 
+import com.ar.shoppy.enums.orderStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
 @Data
+@Table(name="cliente")
 public class Client {
     @Id
     @GeneratedValue(generator = "uuid")
@@ -18,6 +18,8 @@ public class Client {
     private String name;
     private String email;
     private String phone;
+    @OneToMany
     private List <Order> orders;
-
+    @Enumerated
+    private orderStatus orderStatus;
 }
