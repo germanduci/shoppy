@@ -11,16 +11,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name="archivo")
-public class File {
+public class file {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    private String fileId;
     @ManyToOne
-    private Client client;
-    private String name;
-    private String mime;
+    private com.ar.shoppy.domain.client fileClient;
+    private String fileName;
+    private String fileMime;
     @Basic(fetch = FetchType.LAZY)
-    private byte[] file;
-
+    private byte[] fileByte;
 }

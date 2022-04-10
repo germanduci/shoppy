@@ -6,20 +6,19 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
 @Data
 @Table(name="cliente")
-public class Client {
+public class client {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String clientId;
-    private String name;
-    private String email;
-    private String phone;
+    private String clientName;
+    private String clientEmail;
+    private String clientPhone;
     @OneToMany
-    private List <Order> orders;
+    private List <order> clientOrders;
     @Enumerated
-    private orderStatus orderStatus;
+    private orderStatus clientOrderStatus;
 }

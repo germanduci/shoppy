@@ -7,24 +7,23 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 @Data
 @Entity
 @Table(name="orden")
-public class Order {
+public class order {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String orderId;
-    private String name;
+    private String orderName;
     @OneToOne
-    private Client client;
+    private com.ar.shoppy.domain.client orderClient;
     @OneToMany
-    private List<File> files;
+    private List<file> orderFiles;
     @Temporal(value=TemporalType.DATE)
     private Date orderDate = new Date();
-    private Date endDate;
-    private String requirements;
+    private Date orderEndDate;
+    private String orderRequirements;
     @Enumerated
-    private orderStatus status;
+    private orderStatus orderStatus;
 }
