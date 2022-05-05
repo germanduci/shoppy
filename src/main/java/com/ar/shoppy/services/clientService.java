@@ -1,6 +1,6 @@
 package com.ar.shoppy.services;
 
-import com.ar.shoppy.domain.client;
+import com.ar.shoppy.domain.Client;
 import com.ar.shoppy.repository.clientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,38 +13,26 @@ public class clientService {
     @Autowired
     private clientRepository clientRepo;
 
-    public void registerClient (client client){
+    public void registerClient (Client client){
         clientRepo.save(client);
     }
 
-    public List<client> clientList(){
+    public List<Client> clientList(){
         return clientRepo.findAll();
     }
 
-    public client clientListById(String id){
-        Optional<client> response = clientRepo.findById(id);
-        if (response.isPresent()){
-            client client = response.get();
-            return client;
-        }else{
-            return null;
-        }
+    public Client clientListById(String id){
+        Optional<Client> response = clientRepo.findById(id);
+        return response.orElse(null);
     }
 
-    public client clientListByName(String name){
-        Optional<client>response = clientRepo.findByClient(name);
-        if (response.isEmpty()){
-            client client = response.get();
-            return client;
-        }else{
-            return null;
-        }
+    public Client clientListByName(String name){
+        Optional<Client>response = clientRepo.findByClient(name);
+        return response.orElse(null);
     }
 
     public void deleteClient(String id){
-        Optional<client> response = clientRepo.findById(id);
-        if (response.isPresent()){
-            clientRepo.delete(response.get());
-        }
+        Optional<Client> response = clientRepo.findById(id);
+        response.ifPresent(client -> clientRepo.delete(client));
     }
 }

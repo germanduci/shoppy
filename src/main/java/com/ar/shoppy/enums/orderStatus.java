@@ -6,7 +6,7 @@ public enum orderStatus {
 
     private String status;
 
-    private orderStatus(String orderStatus) {this.status = status;    }
+    private orderStatus(String orderStatus) {this.status = orderStatus;}
 
     public String getValue() {return status;}
 }

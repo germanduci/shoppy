@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name="cliente")
-public class client {
+public class Client {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -18,7 +18,7 @@ public class client {
     private String clientEmail;
     private String clientPhone;
     @OneToMany
-    private List <order> clientOrders;
+    private List <Order> clientOrders;
     @Enumerated
     private orderStatus clientOrderStatus;
 }
