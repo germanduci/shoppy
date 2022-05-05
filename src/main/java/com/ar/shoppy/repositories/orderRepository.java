@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface orderRepository extends JpaRepository<Orden,String> {
 
-    @Query("SELECT a FROM Order a WHERE a.orderStatus=:status")
+    @Query("SELECT a FROM Orden a WHERE a.orderEstado=:status")
     public List<Orden> findByStatus(@Param("status")String status);
 
 }

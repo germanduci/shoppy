@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface fileRepository extends JpaRepository<Archivo,String> {
 
-    @Query("SELECT a FROM File a WHERE a.fileName LIKE %:name%")
+    @Query("SELECT a FROM Archivo a WHERE a.archivoNombre LIKE %:name%")
     public Optional<Archivo> findByFile(@Param("name") String name);
 
 }

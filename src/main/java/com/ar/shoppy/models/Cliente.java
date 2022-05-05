@@ -16,6 +16,6 @@ public class Cliente {
     private String clienteMail;
     private String clienteTelef;
     @OneToMany
-    @JoinColumn(name="clientId")
+    @JoinColumn(name="clienteId")
     private List<Orden> clienteOrden;
 }
