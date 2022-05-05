@@ -1,9 +1,11 @@
 package com.ar.shoppy.services;
 
-import com.ar.shoppy.domain.File;
-import com.ar.shoppy.repository.fileRepository;
+import com.ar.shoppy.models.File;
+import com.ar.shoppy.repositories.fileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,12 +13,12 @@ import java.util.Optional;
 public class fileService {
         @Autowired
         private fileRepository fileRepo;
-
+        @Transactional
         public void saveFile(File file){
                 fileRepo.save(file);
         }
 
-        public List<File> fileList(){
+        public List<File> fileListAll(){
                 return fileRepo.findAll();
         }
 
@@ -29,7 +31,7 @@ public class fileService {
                 Optional<File> response = fileRepo.findByFile(name);
                 return response.orElse(null);
         }
-
+        @Transactional
         public void deleteFile(String id){
                 Optional<File> response = fileRepo.findById(id);
                 response.ifPresent(file->fileRepo.delete(file));

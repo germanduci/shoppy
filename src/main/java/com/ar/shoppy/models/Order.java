@@ -1,10 +1,10 @@
-package com.ar.shoppy.domain;
+package com.ar.shoppy.models;
 
 import com.ar.shoppy.enums.orderStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 @Data
 @Entity
@@ -20,8 +20,8 @@ public class Order {
     @OneToMany
     private List<File> orderFiles;
     @Temporal(value=TemporalType.DATE)
-    private Date orderDate = new Date();
-    private Date orderEndDate;
+    private LocalDate orderDate = LocalDate.now();
+    private LocalDate orderEndDate;
     private String orderRequirements;
     @Enumerated
     private orderStatus orderStatus;

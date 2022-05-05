@@ -1,7 +1,6 @@
-package com.ar.shoppy.repository;
+package com.ar.shoppy.repositories;
 
-import com.ar.shoppy.domain.Client;
-import com.ar.shoppy.domain.File;
+import com.ar.shoppy.models.File;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

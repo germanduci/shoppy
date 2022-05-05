@@ -1,6 +1,5 @@
-package com.ar.shoppy.domain;
+package com.ar.shoppy.models;
 
-import com.ar.shoppy.enums.orderStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
@@ -19,6 +18,4 @@ public class Client {
     private String clientPhone;
     @OneToMany
     private List <Order> clientOrders;
-    @Enumerated
-    private orderStatus clientOrderStatus;
 }

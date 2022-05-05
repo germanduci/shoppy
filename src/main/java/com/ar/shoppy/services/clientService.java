@@ -1,9 +1,11 @@
 package com.ar.shoppy.services;
 
-import com.ar.shoppy.domain.Client;
-import com.ar.shoppy.repository.clientRepository;
+import com.ar.shoppy.models.Client;
+import com.ar.shoppy.repositories.clientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +15,12 @@ public class clientService {
     @Autowired
     private clientRepository clientRepo;
 
+    @Transactional
     public void registerClient (Client client){
         clientRepo.save(client);
     }
 
-    public List<Client> clientList(){
+    public List<Client> clientListAll(){
         return clientRepo.findAll();
     }
 
@@ -31,6 +34,7 @@ public class clientService {
         return response.orElse(null);
     }
 
+    @Transactional
     public void deleteClient(String id){
         Optional<Client> response = clientRepo.findById(id);
         response.ifPresent(client -> clientRepo.delete(client));

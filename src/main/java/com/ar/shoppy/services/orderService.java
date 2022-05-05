@@ -1,10 +1,11 @@
 package com.ar.shoppy.services;
 
-import com.ar.shoppy.domain.Order;
-import com.ar.shoppy.repository.orderRepository;
+import com.ar.shoppy.models.Order;
+import com.ar.shoppy.repositories.orderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +15,12 @@ public class orderService {
     @Autowired
     private orderRepository orderRepo;
 
+    @Transactional
     public void orderRegister (Order order){
         orderRepo.save(order);
     }
 
-    public List<Order> orderAll(){
+    public List<Order> orderListAll(){
         return orderRepo.findAll();
     }
 
@@ -32,12 +34,13 @@ public class orderService {
         return response.orElse(null);
     }
 
+    public List<Order> orderByStatus(String status){
+        return orderRepo.findByStatus(status);
+    }
+
+    @Transactional
     public void deleteOrder(String id){
         Optional<Order> response = orderRepo.findById(id);
         response.ifPresent(order -> orderRepo.delete(order));
-    }
-
-    public List<Order> orderByStatus(String status){
-        return orderRepo.findByStatus(status);
     }
 }

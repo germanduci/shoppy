@@ -1,4 +1,4 @@
-package com.ar.shoppy.domain;
+package com.ar.shoppy.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
