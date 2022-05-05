@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Data
 @Table(name="user")
-public class User {
+public class Usuario {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")

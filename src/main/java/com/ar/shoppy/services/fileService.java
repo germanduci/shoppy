@@ -1,6 +1,6 @@
 package com.ar.shoppy.services;
 
-import com.ar.shoppy.models.File;
+import com.ar.shoppy.models.Archivo;
 import com.ar.shoppy.repositories.fileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,26 +14,26 @@ public class fileService {
         @Autowired
         private fileRepository fileRepo;
         @Transactional
-        public void saveFile(File file){
+        public void saveFile(Archivo file){
                 fileRepo.save(file);
         }
 
-        public List<File> fileListAll(){
+        public List<Archivo> fileListAll(){
                 return fileRepo.findAll();
         }
 
-        public File fileListById(String id){
-                Optional<File>response= fileRepo.findById(id);
+        public Archivo fileListById(String id){
+                Optional<Archivo>response= fileRepo.findById(id);
                 return response.orElse(null);
         }
 
-        public File fileListByName(String name){
-                Optional<File> response = fileRepo.findByFile(name);
+        public Archivo fileListByName(String name){
+                Optional<Archivo> response = fileRepo.findByFile(name);
                 return response.orElse(null);
         }
         @Transactional
         public void deleteFile(String id){
-                Optional<File> response = fileRepo.findById(id);
+                Optional<Archivo> response = fileRepo.findById(id);
                 response.ifPresent(file->fileRepo.delete(file));
         }
 }

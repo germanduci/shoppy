@@ -1,25 +1,23 @@
 package com.ar.shoppy.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Data
 @Table(name="archivo")
-public class File {
+public class Archivo {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String fileId;
+    private String archivoId;
     @ManyToOne
-    private Client fileClient;
-    private String fileName;
-    private String fileMime;
+    @JoinColumn(name="ordenId")
+    private Orden orden;
+    private String archivoNombre;
+    private String archivoMime;
+    @Lob
     @Basic(fetch = FetchType.LAZY)
-    private byte[] fileByte;
+    private byte[] archivoByte;
 }

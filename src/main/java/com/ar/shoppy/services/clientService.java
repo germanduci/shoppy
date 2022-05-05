@@ -1,6 +1,6 @@
 package com.ar.shoppy.services;
 
-import com.ar.shoppy.models.Client;
+import com.ar.shoppy.models.Cliente;
 import com.ar.shoppy.repositories.clientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,27 +16,27 @@ public class clientService {
     private clientRepository clientRepo;
 
     @Transactional
-    public void registerClient (Client client){
+    public void registerClient (Cliente client){
         clientRepo.save(client);
     }
 
-    public List<Client> clientListAll(){
+    public List<Cliente> clientListAll(){
         return clientRepo.findAll();
     }
 
-    public Client clientListById(String id){
-        Optional<Client> response = clientRepo.findById(id);
+    public Cliente clientListById(String id){
+        Optional<Cliente> response = clientRepo.findById(id);
         return response.orElse(null);
     }
 
-    public Client clientListByName(String name){
-        Optional<Client>response = clientRepo.findByClient(name);
+    public Cliente clientListByName(String name){
+        Optional<Cliente>response = clientRepo.findByClientName(name);
         return response.orElse(null);
     }
 
     @Transactional
     public void deleteClient(String id){
-        Optional<Client> response = clientRepo.findById(id);
+        Optional<Cliente> response = clientRepo.findById(id);
         response.ifPresent(client -> clientRepo.delete(client));
     }
 }
